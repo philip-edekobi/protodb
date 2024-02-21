@@ -29,7 +29,7 @@ func parseFilter(q string) (*Query, error) {
 
 		key, nextIndex, err := LexString(qRune, i)
 		if err != nil {
-			return nil, fmt.Errorf("expected a valid key, got [%s]: `%d`", err, nextIndex)
+			return nil, fmt.Errorf("expected a valid key, got [%s]: `%s`", err, q[nextIndex:])
 		}
 
 		// expecting comparison operator, ":"
@@ -39,6 +39,7 @@ func parseFilter(q string) (*Query, error) {
 		i = nextIndex + 1
 
 		op := "="
+		i = eatWhiteSpace(qRune, i)
 		if q[i] == '>' || q[i] == '<' {
 			op = string(q[i])
 			i++
@@ -46,7 +47,7 @@ func parseFilter(q string) (*Query, error) {
 
 		value, nextIndex, err := LexString(qRune, i)
 		if err != nil {
-			return nil, fmt.Errorf("expected a valid value, got [%s]: `%d`", err, nextIndex)
+			return nil, fmt.Errorf("expected a valid value, got [%s]: `%s`", err, q[nextIndex:])
 		}
 		i = nextIndex
 
