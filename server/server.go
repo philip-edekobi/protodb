@@ -70,6 +70,31 @@ func (s Server) AddDoc(w http.ResponseWriter, r *http.Request, _ httprouter.Para
 	}, nil)
 }
 
-func (s Server) GetDoc(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {}
+func (s Server) docByID(id string) (map[string]any, error) {
+	val, err := s.DBInstance.Get(id)
+	if err != nil {
+		return nil, err
+	}
+
+	var document map[string]any
+
+	err = json.Unmarshal([]byte(val), &document)
+
+	return document, nil
+}
+
+func (s Server) GetDoc(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	id := ps.ByName("id")
+
+	doc, err := s.docByID(id)
+	if err != nil {
+		jsonResponse(w, nil, err)
+		return
+	}
+
+	jsonResponse(w, map[string]any{
+		"document": doc,
+	}, nil)
+}
 
 func (s Server) SearchDocs(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {}
