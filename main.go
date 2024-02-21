@@ -17,7 +17,12 @@ const (
 )
 
 func main() {
-	server := server.Newserver(PORT, DATADIR, INDEXDIR)
+	server, err := server.Newserver(PORT, DATADIR, INDEXDIR)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer server.Close()
 
 	router := httprouter.New()
 

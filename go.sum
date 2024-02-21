@@ -1,9 +1,11 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
 github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
-github.com/philip-edekobi/go-cask v0.0.0-20240217120047-84057603e96f h1:ZPea/DSh2urBp/+4YW7EqBNdbz44SP76n6HVIGg4hfw=
-github.com/philip-edekobi/go-cask v0.0.0-20240217120047-84057603e96f/go.mod h1:F9HZ92jXKMjU0lZgInwIjge6+ycUvSva1gAGWQ9f+QI=
+github.com/philip-edekobi/go-cask v0.0.0-20240221033148-1ae9c5e4e98e h1:hhtSVde1IA6g4cxMGURQLoq37YZT4yR1vX1D2axRlVI=
+github.com/philip-edekobi/go-cask v0.0.0-20240221033148-1ae9c5e4e98e/go.mod h1:F9HZ92jXKMjU0lZgInwIjge6+ycUvSva1gAGWQ9f+QI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
