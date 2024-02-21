@@ -91,7 +91,7 @@ func (q Query) Match(doc map[string]any) bool {
 	return true
 }
 
-func parseFilter(q string) (*Query, error) {
+func ParseFilter(q string) (*Query, error) {
 	if q == "" {
 		return &Query{}, nil
 	}

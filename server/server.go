@@ -7,6 +7,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/julienschmidt/httprouter"
 	gocask "github.com/philip-edekobi/go-cask"
+
+	"github.com/philip-edekobi/protodb/searcher"
 )
 
 type Server struct {
@@ -98,5 +100,38 @@ func (s Server) GetDoc(w http.ResponseWriter, r *http.Request, ps httprouter.Par
 }
 
 func (s Server) SearchDocs(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	//
+	q, err := searcher.ParseFilter(r.URL.Query().Get("q"))
+	if err != nil {
+		jsonResponse(w, nil, err)
+		return
+	}
+
+	var documents []map[string]any
+
+	keys := s.DBInstance.ListKeys()
+
+	for _, key := range keys {
+		var doc map[string]any
+
+		val, err := s.DBInstance.Get(key)
+		if err != nil {
+			jsonResponse(w, nil, err)
+			return
+		}
+
+		err = json.Unmarshal([]byte(val), &doc)
+		if err != nil {
+			jsonResponse(w, nil, err)
+			return
+		}
+
+		if q.Match(doc) {
+			documents = append(documents, map[string]any{
+				"id":   key,
+				"body": doc,
+			})
+		}
+	}
+
+	jsonResponse(w, map[string]any{"documents": documents, "count": len(documents)}, nil)
 }
