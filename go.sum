@@ -6,6 +6,12 @@ github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4d
 github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
 github.com/philip-edekobi/go-cask v0.0.0-20240221033148-1ae9c5e4e98e h1:hhtSVde1IA6g4cxMGURQLoq37YZT4yR1vX1D2axRlVI=
 github.com/philip-edekobi/go-cask v0.0.0-20240221033148-1ae9c5e4e98e/go.mod h1:F9HZ92jXKMjU0lZgInwIjge6+ycUvSva1gAGWQ9f+QI=
+github.com/philip-edekobi/go-cask v0.0.0-20240221145252-5f55cbbcc018 h1:CYxkAoDEvuWeSmj9QWspWwnJ0gsWv6Yxigo199hueu0=
+github.com/philip-edekobi/go-cask v0.0.0-20240221145252-5f55cbbcc018/go.mod h1:F9HZ92jXKMjU0lZgInwIjge6+ycUvSva1gAGWQ9f+QI=
+github.com/philip-edekobi/go-cask v0.0.0-20240221192138-8f6ac8718666 h1:v8bI/Kxl0PR2e0mS3oW992JJgQ9+OVV5xrY+5PAzVBg=
+github.com/philip-edekobi/go-cask v0.0.0-20240221192138-8f6ac8718666/go.mod h1:F9HZ92jXKMjU0lZgInwIjge6+ycUvSva1gAGWQ9f+QI=
+github.com/philip-edekobi/go-cask v0.0.0-20240221195754-9a8512e2d5ff h1:pf8MeysrFquX/3dBIF36I4RuNjSOtbTvHZtQXyYwlF4=
+github.com/philip-edekobi/go-cask v0.0.0-20240221195754-9a8512e2d5ff/go.mod h1:F9HZ92jXKMjU0lZgInwIjge6+ycUvSva1gAGWQ9f+QI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
