@@ -97,4 +97,6 @@ func (s Server) GetDoc(w http.ResponseWriter, r *http.Request, ps httprouter.Par
 	}, nil)
 }
 
-func (s Server) SearchDocs(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {}
+func (s Server) SearchDocs(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	//
+}
