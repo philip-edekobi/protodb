@@ -17,6 +17,11 @@ func TestLex(t *testing.T) {
 	num, idx, err := LexString([]rune(str), idx+1)
 	require.Nil(t, err)
 	require.Equal(t, "17", num)
+
+	str = "name: \"andy\""
+	name, idx, err := LexString([]rune(str), 5)
+	require.Nil(t, err)
+	require.Equal(t, "andy", name)
 }
 
 func TestEatWhiteSpace(t *testing.T) {
