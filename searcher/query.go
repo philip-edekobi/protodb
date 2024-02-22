@@ -7,25 +7,25 @@ import (
 )
 
 type CompareFilter struct {
-	key   []string
-	value string
-	op    string
+	Key   []string
+	Value string
+	Op    string
 }
 
 type Query struct {
-	ands []CompareFilter
+	Ands []CompareFilter
 }
 
 func (q Query) Match(doc map[string]any) bool {
-	for _, argument := range q.ands {
-		value, ok := getPath(doc, argument.key)
+	for _, argument := range q.Ands {
+		Value, ok := getPath(doc, argument.Key)
 		if !ok {
 			return false
 		}
 
 		// equality
-		if argument.op == "=" {
-			match := fmt.Sprintf("%v", value) == argument.value
+		if argument.Op == "=" {
+			match := fmt.Sprintf("%v", Value) == argument.Value
 			if !match {
 				return false
 			}
@@ -34,14 +34,14 @@ func (q Query) Match(doc map[string]any) bool {
 		}
 
 		// < and >
-		right, err := strconv.ParseFloat(argument.value, 64)
+		right, err := strconv.ParseFloat(argument.Value, 64)
 		if err != nil {
 			return false
 		}
 
 		var left float64
 
-		switch t := value.(type) {
+		switch t := Value.(type) {
 		case float64:
 			left = t
 		case float32:
@@ -75,7 +75,7 @@ func (q Query) Match(doc map[string]any) bool {
 			return false
 		}
 
-		if argument.op == ">" {
+		if argument.Op == ">" {
 			if left <= right {
 				return false
 			}
@@ -105,10 +105,14 @@ func ParseFilter(q string) (*Query, error) {
 
 		key, nextIndex, err := LexString(qRune, i)
 		if err != nil {
-			return nil, fmt.Errorf("expected a valid key, got [%s]: `%s`", err, q[nextIndex:])
+			return nil, fmt.Errorf("expected a valid Key, got [%s]: `%s`", err, q[nextIndex:])
 		}
 
-		// expecting comparison operator, ":"
+		if nextIndex >= len(q) {
+			break
+		}
+
+		// expecting comparison Operator, ":"
 		if q[nextIndex] != ':' {
 			return nil, fmt.Errorf("expected colon at %d, got `%s`", nextIndex, q[nextIndex:])
 		}
@@ -123,17 +127,17 @@ func ParseFilter(q string) (*Query, error) {
 
 		value, nextIndex, err := LexString(qRune, i)
 		if err != nil {
-			return nil, fmt.Errorf("expected a valid value, got [%s]: `%s`", err, q[nextIndex:])
+			return nil, fmt.Errorf("expected a valid Value, got [%s]: `%s`", err, q[nextIndex:])
 		}
 		i = nextIndex
 
 		argument := CompareFilter{
-			key:   strings.Split(key, "."),
-			value: value,
-			op:    op,
+			Key:   strings.Split(key, "."),
+			Value: value,
+			Op:    op,
 		}
 
-		parsed.ands = append(parsed.ands, argument)
+		parsed.Ands = append(parsed.Ands, argument)
 	}
 
 	return &parsed, nil

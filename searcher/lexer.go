@@ -60,6 +60,10 @@ func LexString(input []rune, index int) (string, int, error) {
 }
 
 func eatWhiteSpace(input []rune, index int) int {
+	if index >= len(input) {
+		return index
+	}
+
 	idx := index
 
 	for unicode.IsSpace(input[idx]) {
